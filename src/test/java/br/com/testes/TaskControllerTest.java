@@ -10,10 +10,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import br.ce.wcaquino.taskbackend.controller.TaskController;
-import br.ce.wcaquino.taskbackend.model.Task;
-import br.ce.wcaquino.taskbackend.repo.TaskRepo;
-import br.ce.wcaquino.taskbackend.utils.ValidationException;
+import br.com.taskbackend.controller.TaskController;
+import br.com.taskbackend.model.Task;
+import br.com.taskbackend.repo.TaskRepo;
+import br.com.taskbackend.utils.ValidationException;
 
 public class TaskControllerTest {
 
