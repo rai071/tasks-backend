@@ -6,16 +6,12 @@ pipeline {
     stages {
         stage ('Build Backend') {
             steps {
-                sh ''' 
-					mvn clean package -DskipTests=true
-				''' 
+                sh "mvn clean package -DskipTests=true" 
             }
         }
         stage ('Unit Tests') {
             steps {
-                sh ''' 
-					mvn test
-				''' 
+                sh "mvn test" 
             }
         }
         stage ('Sonar Analysis') {
@@ -31,7 +27,7 @@ pipeline {
         stage ('Quality Gate') {
             steps {
                 sleep(5)
-                timeout(time: 2, unit: 'MINUTES'){
+                timeout(time: 1, unit: 'MINUTES'){
                     waitForQualityGate abortPipeline: true
                 }
             }
