@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh "mvn test" 
             }
-        }
+        }		 
         stage ('Sonar Analysis') {
             environment {
                 scannerHome=tool 'SONAR_SCANNER'
@@ -38,4 +38,9 @@ pipeline {
             }
         }
     }
+	post {
+		always {
+			junit 'target/surefire-reports/*.xml'
+		}
+	}
 }
