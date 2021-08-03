@@ -36,6 +36,9 @@ public class TaskController {
 		if(todo.getDueDate() == null) {
 			throw new ValidationException("Fill the due date");
 		}
+		if(todo.getDueDate() == null) {
+			throw new ValidationException("Fill the due date");
+		}
 		if(!DateUtils.isEqualOrFutureDate(todo.getDueDate())) {
 			throw new ValidationException("Due date must not be in past");
 		}
