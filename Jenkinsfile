@@ -34,7 +34,9 @@ pipeline {
         }
 		stage ('Deploy') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'tomcat_deploy', path: '', url: 'http://10.1.1.20:8080')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+				script {
+					sshPublisher(publishers: [sshPublisherDesc(configName: 'intradev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/FullTestPipeline/${BUILD_NUMBER}', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'Dockerfile'), sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/FullTestPipeline/${BUILD_NUMBER}', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/FullTestPipeline')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
             }
         }
     }
