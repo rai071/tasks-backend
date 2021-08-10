@@ -1,11 +1,3 @@
-FROM maven:3.6.0-jdk-11-slim AS build
+FROM tomcat:8.5.50-jdk8-openjdk
 
-RUN mkdir -p /app/api
-
-FROM openjdk:11-jre-slim
-
-COPY --from=build /app/target/tasks-backend.jar /app/api/tasks-backend.jar
-
-EXPOSE 8081
-
-ENTRYPOINT ["java","-jar","/app/api/tasks-backend.jar"]
+COPY ./tasks-backend.war /usr/local/tomcat/webapps/tasks.war
