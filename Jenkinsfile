@@ -35,7 +35,7 @@ pipeline {
 		stage ('Deploy') {
             steps {
 				script {
-					sshPublisher(publishers: [sshPublisherDesc(configName: 'intradev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/FullTestPipeline/${BUILD_NUMBER}', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'Dockerfile'), sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/FullTestPipeline/${BUILD_NUMBER}', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/FullTestPipeline')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+					sshPublisher(publishers: [sshPublisherDesc(configName: 'intradev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/FullTestPipeline/${BUILD_NUMBER}', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'Dockerfile'), sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ls', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/FullTestPipeline/${BUILD_NUMBER}', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/tasks-backend.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 				}
             }
         }
